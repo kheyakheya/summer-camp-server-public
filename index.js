@@ -215,7 +215,7 @@ async function run() {
         res.send(result);
   
       })
-      // getting top six classes
+      // getting top six classes by sort
       app.get('/top-class', async(req,res)=>{
         const topClasses = await classesCollection.find().sort({ enrolled: -1 }).limit(6).toArray();
         res.send(topClasses);        
