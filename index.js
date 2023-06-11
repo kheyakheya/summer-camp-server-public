@@ -190,14 +190,14 @@ async function run() {
         console.log(result);
         res.send(result);
       })
-      // getting instructor email wise class
+      // getting instructors email wise class
       app.get('/classes/:email',async(req,res)=>{
         const email= req.params.email;
         const query= {email:email};
         const result= await classesCollection.find(query).toArray();
         res.send(result);
       })
-      // update class by instructor
+      // update classes by instructor
       app.put('/classes/:id', verifyJWT, async(req,res)=>{
         const id=req.params.id;
         const updatedItem= req.body;
