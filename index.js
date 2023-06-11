@@ -107,7 +107,7 @@ async function run() {
     app.get('/users/instructor/:email', verifyJWT, async(req,res)=>{
       const email= req.params.email;
       if(req.decoded.email !== email){
-        return res.status(403).send({error: true, message: 'false instructor'})
+        return res.status(403).send({error: true, message: 'Fake instructor'})
       }
       const  query={email:email};
       const user= await usersCollection.findOne(query);
@@ -147,7 +147,7 @@ async function run() {
       const result= await classesCollection.find().toArray();
       res.send(result);
       })
-      // update class status to approve
+      // update class status to approve by admin
       app.patch('/classes/approved/:id', async(req,res)=>{
         const id= req.params.id;
         
@@ -161,7 +161,7 @@ async function run() {
         console.log(result);
         res.send(result);
       })
-      // update class status to deny
+      // update class status to deny by admin
       app.patch('/classes/denied/:id', async(req,res)=>{
         const id= req.params.id;
         
